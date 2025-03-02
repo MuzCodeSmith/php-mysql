@@ -49,6 +49,17 @@ class Table{
             throw new Exception("Error:{$this->conn->error} while modifying column");
         }
     }
+
+    public function renameColumn($oldName, $newName, $columnDefination){
+        $query = "ALTER TABLE {$this->tableName} CHANGE {$oldName} {$newName} {$columnDefination}";
+        $response = $this->conn->query($query);
+
+        if($response){
+            echo "Column: {$oldName} renamed successfully";
+        }else{
+            throw new Exception("Error:{$this->conn->error} while renaming column");
+        }
+    }
 } 
 
 ?>
