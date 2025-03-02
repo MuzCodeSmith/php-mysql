@@ -39,8 +39,15 @@ class Table{
         }
     }
 
-    public function modifyTable(){
+    public function modifyTable($columnName,$columnDefination){
+        $query = "ALTER TABLE {$this->tableName} MODIFY {$columnName} {$columnDefination}";
+        $response = $this->conn->query($query);
 
+        if($response){
+            echo "Column: {$columnName} modified successfully";
+        }else{
+            throw new Exception("Error:{$this->conn->error} while modifying column");
+        }
     }
 } 
 
