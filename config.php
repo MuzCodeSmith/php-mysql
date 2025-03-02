@@ -1,23 +1,14 @@
 <?php
+$hostname = "localhost";
+$username = "root";
+$password = "";
 
-class DBConnect {
-    private $hostname ="localhost";
-    private $username ="root";
-    private $password = "";
-    public $conn;
-    
-    public function __construct(){
-        $this->conn = new mysqli($this->hostname,$this->username,$this->password);
+$conn =new mysqli($hostname, $username, $password);
 
-        if($this->conn->connect_error){
-           die("error while connecting to database!");
-        }else{
-            echo "connection to database successful!";
-        }
-    }
+if($conn->connect_error){
+    die("error while connecting to database");
 }
-
-$db = new DBConnect();
-$conn = $db->conn;
-
+// else{
+//     echo "connection to database successful!";
+// }
 ?>
