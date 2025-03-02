@@ -1,18 +1,10 @@
 <?php
-include("./config.php");
+include('./config.php');
+include('./database.php');
 
 $dbname = "school";
-$createDatabaseQuery = "CREATE DATABASE $dbname";
+$db = new Database($conn, $dbname);
 
-$stmt = $conn->prepare($createDatabaseQuery);
-if($stmt){
-    if($stmt->execute()){
-        echo "database $dbname created successfully";
-    }else{
-        die("error while creating database".$conn->error);
-    }
-}else{
-    die("Query preparation failed".$conn->error);
-}
-
+// $db->createDatabase();
+$db->dropDatabase();
 ?>
