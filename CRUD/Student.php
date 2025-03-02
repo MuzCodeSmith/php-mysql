@@ -61,6 +61,27 @@ class Student {
         }
     }
 
+    public function updateStudentById($id, $fname, $lname, $email, $contact, $course){
+        $query = "UPDATE students 
+        SET st_fname = ?, st_lname = ?, st_course = ?, st_contact = ?, st_email = ? 
+        WHERE st_id = ?";
+
+        $stmt=$this->conn->prepare($query);
+
+        if($stmt){
+            $stmt->bind_param('sssssi',$fname,$lname, $email, $contact, $course,$id);
+            $stmt->execute();
+
+            if($stmt->affected_rows>0){
+                echo "student details with id:{$id} is successfully updated";
+            }else{
+                echo "No changes made or Student not found!";
+            }
+        }else{
+            die("Query Prepare Failed: {$this->conn->error}");
+        }
+    }
+
 }
 
 ?>
