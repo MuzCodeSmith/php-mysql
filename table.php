@@ -10,18 +10,7 @@ class Table{
     }
 
     public function createTable($query){
-        // $query = " CREATE TABLE IF NOT EXISTS `{$this->tableName}`(
-        //     st_id INT NOT NULL AUTO_INCREMENT,
-        //     st_fname VARCHAR(50) NOT NULL,
-        //     st_lname VARCHAR(50) NOT NULL,
-        //     st_email VARCHAR(50) NOT NULL,
-        //     st_contact VARCHAR(50) NOT NULL,
-        //     st_regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        //     primary key(st_id)
-        // )";
-
         $response = $this->conn->query($query);
-
         if($response){
             echo "table: {$this->tableName} created successfully";
         }else{
