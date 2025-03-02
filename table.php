@@ -1,8 +1,8 @@
 <?php
 
 class Table{
-    private $tableName;
     private $conn;
+    private $tableName;
 
     public function __construct($conn,$tableName){
         $this->conn = $conn;
@@ -26,6 +26,21 @@ class Table{
         }else{
             throw new Exception("Error: " . $this->conn->error . " while deleting table");
         }
+    }
+
+    public function alterTable($columnName ,$columnDefination){
+        $query = "ALTER TABLE {$this->tableName} ADD {$columnName} {$columnDefination} ";
+        $response = $this->conn->query($query);
+
+        if($response){
+            echo "Column: {$columnName} added successfully";
+        }else{
+            throw new Exception("Error: ".$this->conn->error." while altering table");
+        }
+    }
+
+    public function modifyTable(){
+
     }
 } 
 

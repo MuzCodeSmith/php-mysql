@@ -18,6 +18,7 @@ $createTableQuery = " CREATE TABLE IF NOT EXISTS students (
 
 // $studentTable->createTable($createTableQuery);
 // $studentTable->dropTable('students');
+$studentTable->alterTable('st_course','VARCHAR(50) NOT NULL');
 
 
 ?>
