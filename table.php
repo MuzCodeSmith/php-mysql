@@ -95,7 +95,7 @@ class Table{
             $response = $stmt->execute();
 
             if($response){
-                echo "student added successfully successfully";
+                echo "student added successfully!";
             }else{
                 die("Error: {$this->conn->error} while adding student<br>");
             }
