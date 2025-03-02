@@ -28,6 +28,16 @@ class Table{
         }
     }
 
+    public function renameTable($oldName,$newName){
+        $query = "RENAME TABLE {$oldName} TO {$newName}";
+        $response = $this->conn->query($query);
+        if($response){
+            echo "table: {$oldName} renamed to  {$newName} successfully";
+        }else{
+            throw new Exception("Error: " . $this->conn->error . " while renaming table");
+        }
+    }
+
     public function alterTable($columnName ,$columnDefination){
         $query = "ALTER TABLE {$this->tableName} ADD {$columnName} {$columnDefination} ";
         $response = $this->conn->query($query);

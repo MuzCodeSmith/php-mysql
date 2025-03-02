@@ -16,12 +16,7 @@ $createTableQuery = " CREATE TABLE IF NOT EXISTS students (
     st_regDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
 
-// $studentTable->createTable($createTableQuery);
-// $studentTable->dropTable('students');
-// $studentTable->alterTable('st_course','VARCHAR(50) NOT NULL');
-// $studentTable->modifyTable('st_course','VARCHAR(100) NOT NULL');
-// $studentTable->renameColumn('st_courses','st_course','VARCHAR(50) NOT NULL');
-$studentTable->dropColumn('st_course');
 
+$studentTable->renameTable('employees','students')
 
 ?>
