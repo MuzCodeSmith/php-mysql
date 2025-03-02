@@ -82,6 +82,25 @@ class Student {
         }
     }
 
+    public function deleteStudentByID($id){
+        $query = "DELETE FROM students WHERE st_id = ?";
+        $stmt = $this->conn->prepare($query);
+        
+        if($stmt){
+            $stmt->bind_param("i",$id);
+            $stmt->execute();
+            if($stmt->affected_rows>0){
+                echo "student with id:{$id} is successfully deleted";
+            }else{
+                echo "No Student Found with ID: {$id}";
+            }
+        }else{
+            die("Query Prepare Failed: {$this->conn->error}");
+        }
+    }
+    
+    
+
 }
 
 ?>
