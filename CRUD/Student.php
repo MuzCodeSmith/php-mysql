@@ -44,7 +44,22 @@ class Student {
         throw new  Exception("Error: {$this->conn->error} while fetching records!");  
         }
     }
-    
+
+    public function getStudenById($id){
+        $query = "SELECT * FROM students WHERE st_id = ?";
+
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt){
+            $stmt->bind_param('i',$id);
+            $stmt->execute();
+            $result=$stmt->get_result();
+            
+            if($result->num_rows>0){
+                return $result->fetch_assoc();
+            }
+        }
+    }
 
 }
 
