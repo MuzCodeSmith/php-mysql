@@ -6,5 +6,5 @@ $dbname = "school";
 $db = new Database($conn, $dbname);
 
 // $db->createDatabase();
-$db->dropDatabase();
+// $db->dropDatabase();
 ?>
