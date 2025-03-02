@@ -38,7 +38,7 @@ class Table{
         }
     }
 
-    public function alterTable($columnName ,$columnDefination){
+    public function addTable($columnName ,$columnDefination){
         $query = "ALTER TABLE {$this->tableName} ADD {$columnName} {$columnDefination} ";
         $response = $this->conn->query($query);
 
@@ -83,6 +83,26 @@ class Table{
         }
     }
     
+    // table crud
+    public function insertStudent($fname, $lname, $email, $contact, $course){
+        $query = "INSERT INTO {$this->tableName} (st_fname, st_lname, st_email, st_contact, st_course)
+            VALUES (?, ?, ?, ?, ?)";
+
+         $stmt = $this->conn->prepare($query);
+
+        if($stmt){
+            $stmt->bind_param("sssss",$fname, $lname, $email, $contact, $course);
+            $response = $stmt->execute();
+
+            if($response){
+                echo "student added successfully successfully";
+            }else{
+                die("Error: {$this->conn->error} while adding student<br>");
+            }
+        }else{
+            die("Query Prepare Failed: {$this->conn->error}<br>");
+        }
+    }
 
 }
     

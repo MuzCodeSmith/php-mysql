@@ -17,6 +17,6 @@ $createTableQuery = " CREATE TABLE IF NOT EXISTS students (
 )";
 
 
-$studentTable->renameTable('employees','students')
+$studentTable->insertStudent('Muzaffar','Shaikh','muzzu@test.com','1258127679','B.Tech');
 
 ?>
