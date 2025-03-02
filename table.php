@@ -60,6 +60,20 @@ class Table{
             throw new Exception("Error:{$this->conn->error} while renaming column");
         }
     }
-} 
 
+  
+    public function dropColumn($columnName){
+        $query = "ALTER TABLE {$this->tableName} DROP COLUMN {$columnName}";
+        $response = $this->conn->query($query);
+
+        if($response){
+            echo "Column: {$columnName} deleted successfully";
+        }else{
+            throw new Exception("Error:{$this->conn->error} while deleting column");
+        }
+    }
+    
+
+}
+    
 ?>
