@@ -6,9 +6,9 @@ include('./table.php');
 $dbname = "school";
 $tableName = "students";
 $db = new Database($conn, $dbname);
-$table = new Table($conn,$tableName);
+$table = new Table($conn, $tableName);
 
-$createTableQuery = " CREATE TABLE IF NOT EXISTS `{$dbname}` (
+$createTableQuery = " CREATE TABLE IF NOT EXISTS `{$tableName}` (
     st_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     st_fname VARCHAR(50) NOT NULL,
     st_lname VARCHAR(50) NOT NULL,
