@@ -2,10 +2,12 @@
 include('./config.php');
 include('./database.php');
 include('./table.php');
+include('./CRUD/Student.php');
 
 $dbname = "school";
 $db = new Database($conn, $dbname);
 $studentTable = new Table($conn, 'students');
+$student = new Student($conn);
 
 
 if(isset($_POST['st_fname'])){
@@ -14,7 +16,7 @@ if(isset($_POST['st_fname'])){
 
 function addStudent($details){
 
-    global $studentTable;
+    global $student;
 
     $fname=$details['st_fname'];
     $lname=$details['st_lname'];
@@ -22,8 +24,13 @@ function addStudent($details){
     $contact=$details['st_contact'];
     $course=$details['st_course'];
 
-    $studentTable->insertStudent($fname, $lname, $email, $contact, $course);
+    $student->insertStudent($fname, $lname, $email, $contact, $course);
 }
+
+$allstudents= $student->getAllStudents();
+
+print_r($allstudents);
+
 
 
 ?>
